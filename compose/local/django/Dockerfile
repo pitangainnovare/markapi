@@ -87,7 +87,7 @@ COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
 RUN pip install --no-cache-dir --no-index --find-links=/wheels/ $(find /wheels/ -name "*.whl" ! -name "llama_cpp_python*") \
 	&& rm -rf /wheels/
 
-# Install llama-cpp-python with specific CMAKE flags for Kubernetes nodes with our without AVX support
+# Install llama-cpp-python with specific CMAKE flags for Kubernetes nodes with or without AVX support
 RUN if [ "${DISABLE_AVX}" = "true" ]; then \
   CMAKE_ARGS='-DLLAMA_AVX=OFF -DLLAMA_AVX2=OFF -DLLAMA_FMA=OFF -DLLAMA_F16C=OFF -DLLAMA_OPENMP=ON' pip install llama-cpp-python==${LLAMA_VERSION} --force-reinstall --no-cache-dir; \
     else \
