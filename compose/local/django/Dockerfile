@@ -32,11 +32,10 @@ RUN apt-get install -y ninja-build cmake
 
 # Configurar variables de entorno para compilar con BLAS y SIMD condicionalmente
 ARG ENABLE_OPTIMIZATIONS=true
-RUN if [ "${ENABLE_OPTIMIZATIONS}" = "true" ]; then \
-  export CFLAGS="-mfma -mavx2"; \
-  export CXXFLAGS="-mfma -mavx2"; \
-  export CMAKE_ARGS="-DGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS"; \
-  fi
+ARG ENABLE_OPTIMIZATIONS=true
+ENV CFLAGS="${ENABLE_OPTIMIZATIONS:+-mfma -mavx2}" \
+    CXXFLAGS="${ENABLE_OPTIMIZATIONS:+-mfma -mavx2}" \
+    CMAKE_ARGS="${ENABLE_OPTIMIZATIONS:+-DGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS}"
 
 # Actualizar pip, setuptools y wheel antes de instalar dependencias
 RUN python -m pip install --upgrade pip setuptools wheel
