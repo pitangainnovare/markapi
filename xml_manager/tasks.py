@@ -16,7 +16,7 @@ from .models import XMLDocument
 User = get_user_model()
 
 
-@celery_app.task(bind=True, name=_('Process XML Document'), timelimit=-1)
+@celery_app.task(bind=True, timelimit=-1)
 def task_process_xml_document(self, xml_id, user_id=None, username=None):
     user = _get_user(self.request, username=username, user_id=user_id)
 
@@ -34,7 +34,7 @@ def task_process_xml_document(self, xml_id, user_id=None, username=None):
     return True
 
 
-@celery_app.task(bind=True, name=_('Validate XML Document'), timelimit=-1)
+@celery_app.task(bind=True, timelimit=-1)
 def task_validate_xml_file(self, xml_id, user_id=None, username=None):
     user = _get_user(self.request, username=username, user_id=user_id)
 
@@ -66,7 +66,7 @@ def task_validate_xml_file(self, xml_id, user_id=None, username=None):
     logging.info(f'XML validation completed successfully for {xml_file.xml_file.name}.')
 
 
-@celery_app.task(bind=True, name=_('Generate HTML File'), timelimit=-1)
+@celery_app.task(bind=True, timelimit=-1)
 def task_generate_pdf_file(self, xml_id, user_id=None, username=None):
     user = _get_user(self.request, username=username, user_id=user_id)
     
@@ -80,7 +80,7 @@ def task_generate_pdf_file(self, xml_id, user_id=None, username=None):
     # TODO: Implement PDF generation logic here
 
 
-@celery_app.task(bind=True, name=_('Generate HTML File'), timelimit=-1)
+@celery_app.task(bind=True, timelimit=-1)
 def task_generate_html_file(self, xml_id, user_id=None, username=None):
     user = _get_user(self.request, username=username, user_id=user_id)
     
