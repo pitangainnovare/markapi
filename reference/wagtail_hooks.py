@@ -36,7 +36,7 @@ class ReferenceModelViewSet(SnippetViewSet):
     model = Reference
     add_view_class = ReferenceCreateView
     menu_name = "reference"
-    menu_label = _("Referências")
+    menu_label = _("Referências (Validação)")
     menu_icon = "openquote"
     menu_order = get_menu_order("reference")
     exclude_from_explorer = False

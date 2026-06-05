@@ -11,12 +11,15 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from config import api_router as api_router
 from markup_doc.autocomplete import urlpatterns as autocomplete_admin_urls
+from markup_doc import urls as markup_doc_urls
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    # Markup Doc Editorial Platform
+    path("markup-doc/", include(markup_doc_urls, namespace="markup_doc")),
     # JWT
     path("api/v1/auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path(

@@ -134,7 +134,7 @@ class XMLDocumentSnippetViewSet(SnippetViewSet):
     verbose_name_plural = _("XML Documents")
     icon = "folder-open-inverse"
     menu_name = "xml_manager"
-    menu_label = _("Documentos XML")
+    menu_label = _("1. Documentos XML")
     add_to_admin_menu = False
 
     list_display = (
@@ -154,7 +154,7 @@ class XMLDocumentPDFSnippetViewSet(SnippetViewSet):
     verbose_name_plural = _("XML Document PDFs")
     icon = "doc-full"
     menu_name = "xml_manager"
-    menu_label = _("PDFs")
+    menu_label = _("2. PDFs")
     menu_icon = "doc-full"
     add_to_admin_menu = False
 
@@ -175,7 +175,7 @@ class XMLDocumentHTMLSnippetViewSet(SnippetViewSet):
     verbose_name_plural = _("XML Document HTMLs")
     icon = "doc-full"
     menu_name = "xml_manager"
-    menu_label = _("HTMLs")
+    menu_label = _("3. HTMLs")
     menu_icon = "doc-full-inverse"
     add_to_admin_menu = False
 
@@ -195,10 +195,10 @@ class SPSPackageValidationSnippetViewSet(SnippetViewSet):
     edit_view_class = SPSPackageValidationEditView
     copy_view_enabled = False
     verbose_name = _("SPS package validation")
-    verbose_name_plural = _("Validar SPS")
+    verbose_name_plural = _("0. Validar SPS")
     icon = "sps-package-validation"
     menu_name = "sps_package_validation"
-    menu_label = _("Validar SPS")
+    menu_label = _("0. Validar SPS")
     menu_icon = "sps-package-validation"
     add_to_admin_menu = False
 

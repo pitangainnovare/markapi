@@ -662,3 +662,48 @@ class ProcessedDocx(ArticleDocxMarkup):
         proxy = True
         verbose_name = _("DOCX processado")
         verbose_name_plural = _("DOCXs processados")
+
+
+# Importar novos modelos da plataforma editorial
+from .new_models import (
+    ProcessStatus as NewProcessStatus,
+    Article,
+    ArticleArtifact,
+    ArticleProcessingLog,
+    Reference as NewReference,
+    ElementCitation,
+    SPSPackageValidation as NewSPSPackageValidation,
+)
+
+__all__ = [
+    'ProcessStatus',
+    'ReadOnlyFileWidget',
+    'DownloadMarkedFileWidget',
+    'XrefStatusWidget',
+    'ReprocessButtonPanel',
+    'ArticleDocx',
+    'ParagraphWithLanguageBlock',
+    'ParagraphBlock',
+    'CompoundParagraphBlock',
+    'ImageBlock',
+    'TableBlock',
+    'AuthorParagraphBlock',
+    'AffParagraphBlock',
+    'RefNameBlock',
+    'RefParagraphBlock',
+    'CollectionValuesModel',
+    'CollectionModel',
+    'JournalModel',
+    'Issue',
+    'get_default_collection_acron',
+    'ArticleDocxMarkup',
+    'ArticleDocxMarkupProxy',
+    # Novos modelos da plataforma editorial
+    'NewProcessStatus',
+    'Article',
+    'ArticleArtifact',
+    'ArticleProcessingLog',
+    'NewReference',
+    'ElementCitation',
+    'NewSPSPackageValidation',
+]

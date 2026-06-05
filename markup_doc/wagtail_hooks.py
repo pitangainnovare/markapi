@@ -113,7 +113,7 @@ class ArticleDocxMarkupCreateView(CreateView):
 class UploadDocxViewSet(SnippetViewSet):
     model = UploadDocx
     add_view_class = ArticleDocxCreateView
-    menu_label = _("DOCX")
+    menu_label = _("1. Upload de DOCX")
     menu_icon = "upload"
     add_to_admin_menu = False
     exclude_from_explorer = False
@@ -127,7 +127,7 @@ class MarkupXMLViewSet(SnippetViewSet):
     model = MarkupXML
     add_view_class = ArticleDocxMarkupCreateView
     edit_view_class = ArticleDocxEditView
-    menu_label = _("XML SPS")
+    menu_label = _("2. Editor XML SPS")
     menu_icon = "code"
     add_to_admin_menu = False
     exclude_from_explorer = False
@@ -199,7 +199,7 @@ class JournalModelViewSet(SnippetViewSet):
 
 class ProcessedDocxViewSet(SnippetViewSet):
     model = ProcessedDocx
-    menu_label = _("DOCX processado")
+    menu_label = _("3. DOCX processado")
     menu_icon = "doc-full-inverse"
     add_to_admin_menu = False
     exclude_from_explorer = False
@@ -211,7 +211,7 @@ class ProcessedDocxViewSet(SnippetViewSet):
     
 class IssueViewSet(SnippetViewSet):
     model = Issue
-    menu_label = _("Fascículos")
+    menu_label = _("4. Fascículos")
     menu_icon = "date"
     add_to_admin_menu = False
     exclude_from_explorer = False
@@ -223,8 +223,8 @@ class IssueViewSet(SnippetViewSet):
 
 class XMLSPSSnippetViewSetGroup(SnippetViewSetGroup):
     menu_name = "xml_sps"
-    menu_label = _("XML SPS")
-    menu_icon = "code"
+    menu_label = _("Produtos Finais")
+    menu_icon = "doc-full"
     items = (
         MarkupXMLViewSet,
         SPSPackageValidationSnippetViewSet,
@@ -241,19 +241,19 @@ class ScieloSnippetViewSetGroup(SnippetViewSetGroup):
     items = (
         CollectionModelViewSet,
         JournalModelViewSet,
+        IssueViewSet,
     )
 
 
 class MarkupSnippetViewSetGroup(SnippetViewSetGroup):
     menu_name = "markup_doc"
-    menu_label = _("Marcação")
+    menu_label = _("Fluxo Editorial")
     menu_icon = "edit"
     menu_order = get_menu_order("markup_doc")
     items = (
         UploadDocxViewSet,
         ProcessedDocxViewSet,
         XMLSPSSnippetViewSetGroup,
-        IssueViewSet,
     )
 
 
